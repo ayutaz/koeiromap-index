@@ -3,8 +3,8 @@ name: Build
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
-# Controls when the action will run. 
-on: 
+# Controls when the action will run.
+on:
   workflow_dispatch: {}
   push:
     branches:
@@ -23,16 +23,16 @@ jobs:
         projectPath:
           - .
         unityVersion:
-          - 2022.2.0f1
+          - 2021.3.16f1
         targetPlatform:
-         - WebGL
+         - StandaloneWindows64
     steps:
     - name: Checkout
       uses: actions/checkout@v3.2.0
       with:
         lfs: true
         clean: false
-        
+
 #     Cache
     - uses: actions/cache@v3
       with:
