@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using KoeiromapUnity.Core;
@@ -13,7 +14,7 @@ using Random = UnityEngine.Random;
 
 namespace _KoeiromapIndex
 {
-    public class Presenter : MonoBehaviour
+    public class KoeiromapIndexManager : MonoBehaviour
     {
         [SerializeField] private InputDataView inputDataView;
         [SerializeField] [ReadOnly] private List<OutVoice> outVoices;
@@ -42,25 +43,29 @@ namespace _KoeiromapIndex
             {
                 var outVoice = Instantiate(outVoicePrefab, content);
                 outVoices.Add(outVoice);
+                outVoice.gameObject.SetActive(false);
             }
 
             if (!Directory.Exists(_savePath)) Directory.CreateDirectory(_savePath);
             inputDataView.OnClickCreateVoiceAsObservable().Subscribe(async inputData =>
             {
-                foreach (var outVoice in outVoices)
+                foreach (var (outVoice, index) in outVoices.Select((info, index) => (info, index)))
                 {
                     var voiceParam = new VoiceParam
                     {
                         text = inputData.inputTextData,
-                        speaker_x = inputData.xValue,
-                        speaker_y = inputData.yValue,
+                        speaker_x = inputData.isLockXValue ? inputData.xValue : Random.Range(-3f, 3f),
+                        speaker_y = inputData.isLockYValue ? inputData.yValue : Random.Range(-3f, 3f),
                         style = "talk",
-                        seed = Random.Range(0, 100000).ToString()
+                        seed = inputData.isLockSeed
+                            ? inputData.seed.ToString()
+                            : Random.Range(-10000, 100000).ToString()
                     };
                     var audioClip = await Koeiromap.GetVoice(voiceParam, _token);
                     outVoice.SetText(voiceParam.seed, voiceParam.speaker_x, voiceParam.speaker_y);
                     outVoice.AudioClip = audioClip.audioClip;
-                    await UniTask.Delay(TimeSpan.FromSeconds(1f), cancellationToken: _token);
+                    outVoices[index].gameObject.SetActive(true);
+                    await UniTask.Delay(TimeSpan.FromSeconds(1f), cancellationToken: _token); //APIの連続アクセスを防ぐ
 
                     outVoice.OnClickAsObservable().Subscribe(_ =>
                     {

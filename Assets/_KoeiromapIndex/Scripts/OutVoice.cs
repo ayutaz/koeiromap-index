@@ -21,6 +21,7 @@ namespace _KoeiromapIndex
         }
 
         public IObservable<Unit> OnSaveAsObservable()
+
         {
             return saveVoiceButton.OnClickAsObservable();
         }
@@ -28,7 +29,7 @@ namespace _KoeiromapIndex
         public void SetText(string seed, float x, float y)
         {
             seedText.text = "seed:" + seed;
-            valueText.text = $"x:{x},y:{y}";
+            valueText.text = $"x:{x:F2},y:{y:F2}";
             SaveName = $"{seed}_{x}_{y}.wav";
         }
     }
