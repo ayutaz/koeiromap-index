@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.cysharp.unitask": "2.3.3",
+    "com.dbrizov.naughtyattributes": "2.1.4",
     "com.neuecc.unirx": "7.1.0",
     "com.unity.collab-proxy": "1.17.7",
     "com.unity.feature.2d": "1.0.0",
@@ -21,6 +22,7 @@
     "com.unity.modules.audio": "1.0.0",
     "com.unity.modules.cloth": "1.0.0",
     "com.unity.modules.director": "1.0.0",
+    "jp.ayutaz.koeiromap-unity": "https://github.com/ayutaz/koeiromap-unity.git?path=Assets/KoeiromapUnity/Scripts#develop",
     "com.unity.modules.imageconversion": "1.0.0",
     "com.unity.modules.imgui": "1.0.0",
     "com.unity.modules.jsonserialize": "1.0.0",
@@ -55,7 +57,8 @@
         "com.cysharp",
         "jp.ayutaz.simplefoldericon",
         "com.needle.compilation-visualizer",
-        "com.cysharp.unitask"
+        "com.cysharp.unitask",
+        "com.dbrizov.naughtyattributes"
       ]
     }
   ]
