@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch: {}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        projectPath:
+          - .
+        unityVersion:
+          - 2021.3.16f1
+        targetPlatform:
+          - WebGL
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.4.0
+      - name: Cache
+        uses: actions/cache@v3.3.1
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: true
+          generate_release_notes: true
+          name: ${{ github.event.pull_request.body }}
+          tag_name: ${{ github.event.pull_request.title }}
+          prerelease: false
