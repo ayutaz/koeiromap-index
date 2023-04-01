@@ -48,9 +48,9 @@ jobs:
         targetPlatform: ${{ matrix.targetPlatform }}
 
     - name: Deploy to GitHub Pages
+      if: matrix.targetPlatform == 'WebGL'
       uses: JamesIves/github-pages-deploy-action@v4.4.0
       with:
-        if: matrix.targetPlatform == 'WebGL'
         branch: gh-pages
         folder: build/WebGL
 
