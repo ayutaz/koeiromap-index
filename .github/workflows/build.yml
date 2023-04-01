@@ -26,6 +26,7 @@ jobs:
           - 2021.3.16f1
         targetPlatform:
          - StandaloneWindows64
+         - WebGL
     steps:
     - name: Checkout
       uses: actions/checkout@v3.2.0
@@ -45,6 +46,12 @@ jobs:
       with:
         unityVersion: ${{ matrix.unityVersion }}
         targetPlatform: ${{ matrix.targetPlatform }}
+
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4.4.0
+      with:
+        branch: gh-pages
+        folder: build/WebGL
 
     # Output
     - uses: actions/upload-artifact@v3.1.1
