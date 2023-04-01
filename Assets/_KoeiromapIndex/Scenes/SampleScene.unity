@@ -989,7 +989,7 @@ GameObject:
   m_Component:
   - component: {fileID: 616335492}
   m_Layer: 5
-  m_Name: RandomSeed
+  m_Name: Results
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1412,7 +1412,7 @@ MonoBehaviour:
   inputDataView: {fileID: 1742091022}
   outVoices: []
   content: {fileID: 780252117}
-  voiceOutCount: 3
+  voiceOutCount: 10
   outVoicePrefab: {fileID: 895686126453169811, guid: 48c88ca5a43267e4da9fed3716f7303f, type: 3}
 --- !u!82 &763927359
 AudioSource:
@@ -1520,6 +1520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 780252117}
   - component: {fileID: 780252118}
+  - component: {fileID: 780252119}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -1545,7 +1546,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.000030517578}
-  m_SizeDelta: {x: 0, y: 300}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &780252118
 MonoBehaviour:
@@ -1573,6 +1574,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &780252119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780252116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!114 &781502488 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2190801011078535147, guid: 168aad0dd66bf8d44bb5a635827352a1, type: 3}
@@ -2850,8 +2865,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -350}
-  m_SizeDelta: {x: 0, y: 700}
+  m_AnchoredPosition: {x: 0, y: -280.97394}
+  m_SizeDelta: {x: 0, y: 561.9479}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2085398594
 MonoBehaviour:
@@ -2868,7 +2883,7 @@ MonoBehaviour:
   m_Content: {fileID: 780252117}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 0
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
