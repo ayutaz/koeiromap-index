@@ -4,7 +4,7 @@ Support software to find any voice in KoeiroMap
 
 # Demo
 
-[Web URL](https://ayutaz.github.io/koeiromap-list-index/WebGL/)
+[Web URL](https://ayutaz.github.io/koeiromap-index/WebGL/)
 
 ![](Docs/Demo.gif)
 
