@@ -1,6 +1,6 @@
 # Koeiromap index
 
-Support software to find any voice in KoeiroMap
+Support software to find any voice in Koeiromap
 
 # Demo
 
@@ -13,3 +13,4 @@ Support software to find any voice in KoeiroMap
 
 # License
 * [icon by http://www.defaulticon.com/](http://www.defaulticon.com/)
+* [Koeiromap](http://koeiromap.rinna.jp/)
