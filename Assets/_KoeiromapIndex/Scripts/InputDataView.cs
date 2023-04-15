@@ -29,6 +29,13 @@ namespace _KoeiromapIndex
 
         private inputDataSouce.InputData _inputData;
 
+        private void Awake()
+        {
+#if UNITY_WEBGL || UNITY_EDITOR
+            openSaveFolderButton.gameObject.SetActive(false);
+#endif
+        }
+
         private void Start()
         {
             SetInitData();

@@ -15,6 +15,13 @@ namespace _KoeiromapIndex
         public AudioClip AudioClip { get; set; }
         public string SaveName { get; private set; }
 
+        private void Awake()
+        {
+#if UNITY_WEBGL || UNITY_EDITOR
+            saveVoiceButton.gameObject.SetActive(false);
+#endif
+        }
+
         public IObservable<Unit> OnClickAsObservable()
         {
             return playVoiceButton.OnClickAsObservable();
