@@ -22,17 +22,22 @@ namespace _KoeiromapIndex
 #endif
         }
 
-        public IObservable<Unit> OnClickAsObservable()
+        public IObservable<Unit> PlayVoiceOnClickAsObservable()
         {
             return playVoiceButton.OnClickAsObservable();
         }
 
         public IObservable<Unit> OnSaveAsObservable()
-
         {
             return saveVoiceButton.OnClickAsObservable();
         }
 
+        /// <summary>
+        ///     Set Voice Data Text
+        /// </summary>
+        /// <param name="seed"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public void SetText(string seed, float x, float y)
         {
             seedText.text = "seed:" + seed;

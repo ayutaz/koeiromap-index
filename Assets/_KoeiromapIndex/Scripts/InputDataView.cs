@@ -36,7 +36,7 @@ namespace _KoeiromapIndex
 #endif
         }
 
-        private void Start()
+        public void SetEvents()
         {
             SetInitData();
             OnObserveXValue();
@@ -127,7 +127,18 @@ namespace _KoeiromapIndex
 
         public IObservable<inputDataSouce.InputData> OnClickCreateVoiceAsObservable()
         {
-            return createVoiceButton.OnClickAsObservable().Select(_ => _inputData);
+            return createVoiceButton.OnClickAsObservable().Do(_ => UpdateInputData()).Select(_ => _inputData);
+        }
+
+        /// <summary>
+        ///     Update InputData
+        /// </summary>
+        private void UpdateInputData()
+        {
+            _inputData.inputTextData = inputText.text;
+            _inputData.xValue = xVoiceValue.value;
+            _inputData.yValue = yVoiceValue.value;
+            _inputData.seed = int.Parse(seedInput.text);
         }
 
         public IObservable<Unit> OnClickOpenSaveFolderAsObservable()
