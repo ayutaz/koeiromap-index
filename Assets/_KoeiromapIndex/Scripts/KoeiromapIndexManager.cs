@@ -34,8 +34,9 @@ namespace _KoeiromapIndex
             _savePath = Application.persistentDataPath + "/Koeiromap";
             _token = this.GetCancellationTokenOnDestroy();
             _audioSource = GetComponent<AudioSource>();
-        }
 
+            inputDataView.SetEvents();
+        }
         private void Start()
         {
             //画面の作成
@@ -67,7 +68,7 @@ namespace _KoeiromapIndex
                     outVoices[index].gameObject.SetActive(true);
                     await UniTask.Delay(TimeSpan.FromSeconds(1f), cancellationToken: _token); //APIの連続アクセスを防ぐ
 
-                    outVoice.OnClickAsObservable().Subscribe(_ =>
+                    outVoice.PlayVoiceOnClickAsObservable().Subscribe(_ =>
                     {
                         _audioSource.clip = audioClip.audioClip;
                         _audioSource.Play();
@@ -85,6 +86,10 @@ namespace _KoeiromapIndex
             inputDataView.OnClickOpenSaveFolderAsObservable().Subscribe(_ => { OpenFolder(_savePath); }).AddTo(this);
         }
 
+        /// <summary>
+        ///     フォルダを開く
+        /// </summary>
+        /// <param name="path"></param>
         private static void OpenFolder(string path)
         {
             Process.Start(path);
