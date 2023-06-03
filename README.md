@@ -9,7 +9,7 @@ Support software to find any voice in Koeiromap
 ![](Docs/Demo.gif)
 
 # requirements
-* Unity 2021.3.16f1
+* Unity 2021.3.25f1
 
 # License
 * [icon by http://www.defaulticon.com/](http://www.defaulticon.com/)
